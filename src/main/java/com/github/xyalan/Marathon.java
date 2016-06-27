@@ -22,7 +22,6 @@ import com.github.xyalan.model.v2.GetEventSubscriptionsResponse;
 import java.util.List;
 
 public interface Marathon {
-    // Apps
 	@RequestLine("GET /v2/apps")
 	GetAppsResponse getApps();
 
@@ -58,7 +57,6 @@ public interface Marathon {
 	DeleteAppTaskResponse deleteAppTask(@Param("app_id") String appId,
 										@Param("task_id") String taskId, @Param("scale") String scale);
 
-    // Groups
 	@Headers(HeaderTemplate.RequestBody)
 	@RequestLine("POST /v2/groups")
 	Result createGroup(Group group) throws MarathonException;
@@ -69,9 +67,6 @@ public interface Marathon {
 	@RequestLine("GET /v2/groups/{id}")
 	Group getGroup(@Param("id") String id) throws MarathonException;
 
-    // Tasks
-
-    // Deployments
 	@RequestLine("GET /v2/deployments")
 	List<Deployment> getDeployments();
 	
@@ -80,8 +75,6 @@ public interface Marathon {
 	
 	@RequestLine("DELETE /v2/deployments/{deploymentId}?force=true")
 	void cancelDeployment(@Param("deploymentId") String id);
-
-    // Event Subscriptions
 
 	@Headers(HeaderTemplate.RequestBody)
     @RequestLine("POST /v2/eventSubscriptions?callbackUrl={url}")
@@ -93,13 +86,6 @@ public interface Marathon {
     @RequestLine("GET /v2/eventSubscriptions")
     public GetEventSubscriptionsResponse subscriptions();
 
-    // Queue
-
-    // Server Info
     @RequestLine("GET /v2/info")
 	GetServerInfoResponse getServerInfo();
-
-    // Miscellaneous
-
-
 }
