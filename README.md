@@ -4,6 +4,6 @@ The marathon-cli is  a Java client for communicating with Marathon API. This pro
  [marathon-client](https://github.com/mohitsoni/marathon-client), I will add more features for
  support all [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html).
 
- ## Features
+## Features
 
  - [Persistent Volumes](https://mesosphere.github.io/marathon/docs/persistent-volumes.html)
