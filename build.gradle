@@ -1,4 +1,8 @@
+plugins {
+    id 'net.researchgate.release' version '2.4.0'
+}
 group 'com.github.xyalan'
+version '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
