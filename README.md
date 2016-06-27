@@ -1,1 +1,1 @@
-# marathon-cli
+# marathon-cli [![Build Status](https://travis-ci.org/xyalan/marathon-cli.svg?branch=master)](https://travis-ci.org/xyalan/marathon-cli)
