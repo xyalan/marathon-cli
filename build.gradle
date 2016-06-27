@@ -10,6 +10,10 @@ apply plugin: 'idea'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
+release {
+    tagTemplate = '$version.RELEASE'
+}
+
 repositories {
     mavenCentral()
 }
