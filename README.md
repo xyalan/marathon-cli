@@ -7,3 +7,11 @@ The marathon-cli is  a Java client for communicating with Marathon API. This pro
 ## Features
 
  - [Persistent Volumes](https://mesosphere.github.io/marathon/docs/persistent-volumes.html)
+
+
+## Dependency
+
+|dependency | version|
+|-----------| ------|
+|feign-core    |  8.17.0|
+|feign-gson   |  8.17.0|

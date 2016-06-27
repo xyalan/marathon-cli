@@ -19,10 +19,14 @@ repositories {
 }
 
 ext {
-    feign = '8.17.0'
+    feign_version = '8.17.0'
+    slf4j_version = '1.7.21'
 }
 
 dependencies {
-    compile("com.netflix.feign:feign-core:$feign")
-    compile("com.netflix.feign:feign-gson:$feign")
+    compile(
+            "com.netflix.feign:feign-core:$feign_version",
+            "com.netflix.feign:feign-gson:$feign_version",
+            "org.slf4j:slf4j-api:$slf4j_version"
+    )
 }
