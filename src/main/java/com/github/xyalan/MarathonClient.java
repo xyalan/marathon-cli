@@ -57,7 +57,7 @@ public class MarathonClient {
 				}
 				return null;
 			}).orElse("");
-			return new MarathonException(response.status(), response.reason() + ", message:" + body);
+			return new MarathonException(response.status(), response.reason(), body);
 		}
 	}
 	

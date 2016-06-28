@@ -1,12 +1,19 @@
 package com.github.xyalan.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 public class MarathonException extends Exception {
 	private static final long serialVersionUID = 1L;
 	private int status;
+	private String reason;
 	private String message;
 	
-	public MarathonException(int status, String message) {
+	public MarathonException(int status, String reason, String message) {
 		this.status = status;
+		this.reason = reason;
 		this.message = message;
 	}
 
@@ -17,13 +24,22 @@ public class MarathonException extends Exception {
         return status;
     }
 
-    @Override
+	public String getReason() {
+		return reason;
+	}
+
+	@Override
 	public String getMessage() {
-		return message + " (http status: " + status + ")";
+		Gson gson = new GsonBuilder().create();
+		JsonElement element = gson.toJsonTree(message);
+		JsonObject json = element.getAsJsonObject();
+		json.addProperty("reason", reason);
+		json.addProperty("status", status);
+		return gson.toJson(json);
 	}
 
 	@Override
 	public String toString() {
-		return message + " (http status: " + status + ")";
+		return message;
 	}
 }
