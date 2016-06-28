@@ -27,7 +27,6 @@ public class MarathonClient {
         @Override
         public void apply(RequestTemplate template) {
             template.header("Accept", "application/json");
-            template.header("Content-Type", "application/json");
             template.header("Authorization", "Basic " + base64Encode);
         }
     }
