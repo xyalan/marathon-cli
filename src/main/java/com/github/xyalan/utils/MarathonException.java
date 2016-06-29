@@ -1,9 +1,8 @@
 package com.github.xyalan.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class MarathonException extends Exception {
 	private static final long serialVersionUID = 1L;
@@ -28,18 +27,21 @@ public class MarathonException extends Exception {
 		return reason;
 	}
 
-	@Override
-	public String getMessage() {
-		Gson gson = new GsonBuilder().create();
-		JsonElement element = gson.toJsonTree(message);
+	private String formatError() {
+		JsonElement element = new JsonParser().parse(message);
 		JsonObject json = element.getAsJsonObject();
 		json.addProperty("reason", reason);
 		json.addProperty("status", status);
-		return gson.toJson(json);
+		return json.toString();
+	}
+
+	@Override
+	public String getMessage() {
+		return this.formatError();
 	}
 
 	@Override
 	public String toString() {
-		return message;
+		return this.formatError();
 	}
 }
