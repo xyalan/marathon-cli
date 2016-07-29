@@ -11,6 +11,8 @@ import com.github.xyalan.model.v2.GetServerInfoResponse;
 import com.github.xyalan.model.v2.GetTasksResponse;
 import com.github.xyalan.model.v2.Group;
 import com.github.xyalan.model.v2.Result;
+import com.github.xyalan.model.v2.Version;
+import com.github.xyalan.model.v2.Versions;
 import com.github.xyalan.utils.HeaderTemplate;
 import com.github.xyalan.utils.MarathonException;
 import feign.Headers;
@@ -41,6 +43,10 @@ public interface Marathon {
 	@Headers(HeaderTemplate.RequestBody)
 	@RequestLine("PUT /v2/apps/{app_id}")
 	void updateApp(@Param("app_id") String appId, App app);
+
+	@Headers(HeaderTemplate.RequestBody)
+	@RequestLine("PUT /v2/apps/{app_id}")
+	void updateApp(@Param("app_id") String appId, Version version);
 
 	@Headers(HeaderTemplate.RequestBody)
 	@RequestLine("POST /v2/apps/{id}/restart?force={force}")
@@ -88,4 +94,7 @@ public interface Marathon {
 
     @RequestLine("GET /v2/info")
 	GetServerInfoResponse getServerInfo();
+
+	@RequestLine("GET /v2/apps/{app_id}/versions")
+	Versions getAppVersions(@Param("app_id") String appId);
 }
