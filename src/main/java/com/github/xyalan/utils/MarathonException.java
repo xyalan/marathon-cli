@@ -18,6 +18,7 @@ public class MarathonException extends Exception {
 
     /**
      * Gets the HTTP status code of the failure, such as 404.
+	 * @return http status code
      */
     public int getStatus() {
         return status;
