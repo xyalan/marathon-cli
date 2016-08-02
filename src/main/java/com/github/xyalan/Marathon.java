@@ -97,4 +97,7 @@ public interface Marathon {
 
 	@RequestLine("GET /v2/apps/{app_id}/versions")
 	Versions getAppVersions(@Param("app_id") String appId);
+
+	@RequestLine("GET /v2/apps/{app_id}/versions/{version}")
+	App getVersionApp(@Param("app_id") String appId, String version);
 }
