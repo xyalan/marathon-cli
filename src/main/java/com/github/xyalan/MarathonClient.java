@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Optional;
 
 public class MarathonClient {
@@ -60,7 +61,7 @@ public class MarathonClient {
 			return new MarathonException(response.status(), response.reason(), body);
 		}
 	}
-	
+
 	public static Marathon getInstance(String endpoint) {
 		GsonDecoder decoder = new GsonDecoder(ModelUtils.GSON);
 		GsonEncoder encoder = new GsonEncoder(ModelUtils.GSON);
@@ -76,5 +77,10 @@ public class MarathonClient {
 				.errorDecoder(new MarathonErrorDecoder())
 				.requestInterceptor(new MarathonHeadersInterceptor(base64))
 				.target(Marathon.class, endpoint);
+	}
+
+	public static Marathon getInstance(String endpoint, String username, String password) {
+		String base64Encode = Base64.getMimeEncoder().encodeToString((username + ":" + password).getBytes());
+		return getInstance(endpoint, base64Encode);
 	}
 }
