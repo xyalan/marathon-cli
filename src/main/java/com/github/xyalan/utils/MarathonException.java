@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class MarathonException extends Exception {
+public class MarathonException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	private int status;
 	private String reason;

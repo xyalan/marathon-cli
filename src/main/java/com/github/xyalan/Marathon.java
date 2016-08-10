@@ -28,7 +28,7 @@ public interface Marathon {
 	GetAppsResponse getApps();
 
 	@RequestLine("GET /v2/apps/{id}")
-	GetAppResponse getApp(@Param("id") String id) throws MarathonException;
+	GetAppResponse getApp(@Param("id") String id);
 
 	@RequestLine("GET /v2/apps/{id}/tasks")
 	GetAppTasksResponse getAppTasks(@Param("id") String id);
@@ -53,7 +53,7 @@ public interface Marathon {
 	void restartApp(@Param("id") String id, @Param("force") boolean force);
 
 	@RequestLine("DELETE /v2/apps/{id}")
-	Result deleteApp(@Param("id") String id) throws MarathonException;
+	Result deleteApp(@Param("id") String id);
 
 	@RequestLine("DELETE /v2/apps/{app_id}/tasks?host={host}&scale={scale}")
 	DeleteAppTasksResponse deleteAppTasks(@Param("app_id") String appId,
@@ -65,13 +65,13 @@ public interface Marathon {
 
 	@Headers(HeaderTemplate.RequestBody)
 	@RequestLine("POST /v2/groups")
-	Result createGroup(Group group) throws MarathonException;
+	Result createGroup(Group group);
 	
 	@RequestLine("DELETE /v2/groups/{id}")
-	Result deleteGroup(@Param("id") String id) throws MarathonException;
+	Result deleteGroup(@Param("id") String id);
 	
 	@RequestLine("GET /v2/groups/{id}")
-	Group getGroup(@Param("id") String id) throws MarathonException;
+	Group getGroup(@Param("id") String id);
 
 	@RequestLine("GET /v2/deployments")
 	List<Deployment> getDeployments();
